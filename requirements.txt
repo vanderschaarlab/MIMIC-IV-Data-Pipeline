@@ -7,3 +7,9 @@ pandas==1.0.5
 scikit_learn==1.0.2
 torch==1.6.0
 tqdm==4.47.0
+
+# These were missing in the original repo:
+captum
+imblearn
+pytorch_pretrained_bert
+xgboost
