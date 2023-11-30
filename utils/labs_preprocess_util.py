@@ -1,14 +1,17 @@
 import os
-from glob import glob
-from uuid import uuid1
-from functools import partial
-from multiprocessing import Pool
 from collections import defaultdict
-from typing import Union, List, Tuple
-import pandas as pd
+from functools import partial
+from glob import glob
+from multiprocessing import Pool
+from typing import List, Tuple, Union
+from uuid import uuid1
+
 import numpy as np
+import pandas as pd
+
 if not os.path.exists("./data/temp"):
     os.makedirs("./data/temp")
+
 
 def hadm_imputer(
     charttime: pd._libs.tslibs.timestamps.Timestamp,
@@ -23,14 +26,14 @@ def hadm_imputer(
 ) -> Tuple[str, pd._libs.tslibs.timestamps.Timestamp]:
     # if old hadm exists use that
     if not np.isnan(hadm_old):
-        #print("old")
+        # print("old")
         hadm_old = int(hadm_old)
         admtime, dischtime = [
             [adm_time, disch_time]
             for h_id, adm_time, disch_time in hadm_ids_w_timestamps
             if h_id == hadm_old
         ][0]
-        #print("got old")
+        # print("got old")
         return (
             hadm_old,
             admtime.strftime("%Y-%m-%d %H:%M:%S"),
@@ -120,8 +123,8 @@ def impute_hadm_ids(
         impute_missing_hadm_ids,
         subject_hadm_admittime_tracker=subject_hadm_admittime_tracker,
     )
-    #print(impute_missing_hadm_ids_w_lookup)
-    #print(len(lab_table_chunks))
+    # print(impute_missing_hadm_ids_w_lookup)
+    # print(len(lab_table_chunks))
     with Pool(8) as p:
         p.map(impute_missing_hadm_ids_w_lookup, lab_table_chunks)
     all_csvs = glob("*.csv")
@@ -130,4 +133,3 @@ def impute_hadm_ids(
         lab_tab = pd.concat([lab_tab, pd.read_csv(csv)])
         os.remove(csv)
     return lab_tab
-
