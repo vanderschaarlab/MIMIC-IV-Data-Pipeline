@@ -8,11 +8,11 @@ from collections import defaultdict
 import captum
 import numpy as np
 import parameters
+
 # import jsondim
 import torch
 import torch.nn.functional as F
-from captum.attr import (IntegratedGradients, LayerAttribution, LayerGradCam,
-                         Occlusion)
+from captum.attr import IntegratedGradients, LayerAttribution, LayerGradCam, Occlusion
 from parameters import *
 from sklearn import metrics
 from torch import nn

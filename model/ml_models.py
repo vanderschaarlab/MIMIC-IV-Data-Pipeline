@@ -11,8 +11,7 @@ import pandas as pd
 import torch
 import xgboost as xgb
 from imblearn.over_sampling import RandomOverSampler
-from sklearn.ensemble import (HistGradientBoostingClassifier,
-                              RandomForestClassifier)
+from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 from sklearn.model_selection import KFold
