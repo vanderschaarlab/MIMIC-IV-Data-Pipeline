@@ -1,8 +1,11 @@
+# Originally in repo:
 mimic-iv-1.0
 scrap
 *.gzip
 *.csv.gz
 *summary*.txt
+
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
@@ -180,3 +183,8 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+
+
+
+# Custom:
+mimiciv/
