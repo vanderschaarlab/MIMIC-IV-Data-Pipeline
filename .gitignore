@@ -190,3 +190,6 @@ pyrightconfig.json
 mimiciv/
 data/summary/
 data/csv/
+data/dict/
+data/df/
+.dev
